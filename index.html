@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Bank App</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <style>
+        /* Custom styles for modal backdrop */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 50;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-gradient-to-r from-purple-500 to-pink-500 min-h-screen flex items-center justify-center">
+    <div class="max-w-md w-full bg-white rounded-lg shadow-lg p-6">
+        <h1 class="text-3xl font-bold text-center mb-5 text-gray-800">Flower Bank App</h1>
+        
+        <!-- Dashboard -->
+        <div class="mb-5">
+            <h2 class="text-xl font-semibold">Current Balance: <span id="balance" class="text-green-500 font-bold">0.00</span> USD</h2>
+            <div class="flex justify-between mt-4">
+                <button id="add-money-btn" class="flex-1 bg-gradient-to-r from-green-400 to-green-600 text-white py-2 mx-1 rounded hover:from-green-500 hover:to-green-700 transition">Add Money</button>
+                <button id="withdraw-money-btn" class="flex-1 bg-gradient-to-r from-red-400 to-red-600 text-white py-2 mx-1 rounded hover:from-red-500 hover:to-red-700 transition">Withdraw Money</button>
+            </div>
+            <button id="transaction-history-btn" class="mt-4 bg-gradient-to-r from-blue-400 to-blue-600 text-white w-full py-2 rounded hover:from-blue-500 hover:to-blue-700 transition">Transaction History</button>
+        </div>
+
+        <!-- Transaction History -->
+        <div id="transaction-history" class="hidden bg-gray-100 p-5 rounded-lg shadow">
+            <h2 class="text-xl font-semibold mb-2">Transaction History</h2>
+            <table class="min-w-full bg-white rounded-lg shadow">
+                <thead>
+                    <tr class="bg-gray-200">
+                        <th class="border px-4 py-2">Date</th>
+                        <th class="border px-4 py-2">Type</th>
+                        <th class="border px-4 py-2">Amount</th>
+                        <th class="border px-4 py-2">Balance After</th>
+                    </tr>
+                </thead>
+                <tbody id="transaction-list">
+                    <!-- Transactions will be dynamically added here -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- Modal for Adding Money -->
+    <div id="add-money-modal" class="modal flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+            <h2 class="text-2xl font-bold mb-4">Add Money</h2>
+            <input id="add-money-input" type="number" placeholder="Enter amount" class="border rounded-lg p-2 w-full mb-4">
+            <div class="flex justify-between">
+                <button id="confirm-add" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">Confirm</button>
+                <button id="close-add-modal" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Withdrawing Money -->
+    <div id="withdraw-money-modal" class="modal flex items-center justify-center">
+        <div class="bg-white rounded-lg shadow-lg p-6 max-w-sm w-full">
+            <h2 class="text-2xl font-bold mb-4">Withdraw Money</h2>
+            <input id="withdraw-money-input" type="number" placeholder="Enter amount" class="border rounded-lg p-2 w-full mb-4">
+            <div class="flex justify-between">
+                <button id="confirm-withdraw" class="bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition">Confirm</button>
+                <button id="close-withdraw-modal" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition">Cancel</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
